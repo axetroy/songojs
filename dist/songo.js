@@ -60,11 +60,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var queryParser_1 = __webpack_require__(4);
 	var default_1 = __webpack_require__(2);
 	var GLOBAL = this;
-	function songo(entity) {
-	    return new Songo(entity);
-	}
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = songo;
 	function encode(encodeString) {
 	    return GLOBAL.btoa ? GLOBAL.btoa(encodeString) : encodeURIComponent(encodeString);
 	}
@@ -224,6 +219,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return Songo;
 	}());
+	function songo(entity) {
+	    return new Songo(entity);
+	}
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = songo;
 
 
 /***/ },
