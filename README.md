@@ -1,5 +1,23 @@
 # songo.js [![Build Status](https://travis-ci.org/axetroy/songojs.svg?branch=master)](https://travis-ci.org/axetroy/songojs)![Coverage Status](https://coveralls.io/repos/github/axetroy/songojs/badge.svg?branch=master)[![Dependency](https://david-dm.org/axetroy/songojs.svg)](https://david-dm.org/axetroy/songojs)
 
+### Descriptiondd
+
+用于配合songo协议的前端js库
+
+参考: [https://github.com/suboat/songo](https://github.com/suboat/songo)
+
+### Usage
+
+```bash
+npm install https://github.com/axetroy/songojs.git --save
+```
+
+```javascript
+const songo = require('songo')
+// or
+import songo from 'songo';
+```
+
 ### Documentation
 
 #### songo(entity?: Entity):Songo
