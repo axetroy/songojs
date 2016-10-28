@@ -11,14 +11,14 @@ interface Entity {
 }
 
 const DEFAULT_QUERY = {};
-const DEFAULT_SORT = '-created';
+const DEFAULT_SORT = '';
 const DEFAULT_LIMIT = 10;
 const DEFAULT_PAGE = 0;
 const DEFAULT_SKIP = 0;
 
 const DEFAULT_ENTITY: Entity = {
   query: DEFAULT_QUERY,
-  sort: [DEFAULT_SORT],
+  sort: [],
   limit: DEFAULT_LIMIT,
   page: DEFAULT_PAGE,
   skip: DEFAULT_SKIP

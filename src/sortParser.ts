@@ -21,7 +21,7 @@ class Sort {
   }
 
   toString() {
-    return 'sort=' + this.normalize();
+    return '_sort=' + this.normalize();
   }
 
 }

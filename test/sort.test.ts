@@ -9,15 +9,15 @@ describe('test sort', function () {
 
   it('basic', function () {
     expect(!!sortParser).to.be.equal(true);
-    expect(sortParser() + '').to.be.equal('sort=');
+    expect(sortParser() + '').to.be.equal('_sort=');
   });
 
   it('正向排序自动去除+号', function () {
-    expect(sortParser(['-created', '-money', '+level']) + '').to.be.equal('sort=-created,-money,level');
+    expect(sortParser(['-created', '-money', '+level']) + '').to.be.equal('_sort=-created,-money,level');
   });
 
   it('传入空数组，会获取默认值', function () {
-    expect(sortParser([]) + '').to.be.equal('sort=');
+    expect(sortParser([]) + '').to.be.equal('_sort=');
   });
 
 
