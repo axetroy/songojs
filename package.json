@@ -2,7 +2,7 @@
   "name": "songo",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/songo.min.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha ./test/*.test.ts -r ts-node/register --color",
     "test:watch": "gulp test:watch",

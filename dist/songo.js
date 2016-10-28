@@ -82,7 +82,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Songo = (function () {
 	    function Songo(entity) {
 	        if (entity === void 0) { entity = default_1.DEFAULT_ENTITY; }
-	        this.REG = /^([-\+])(\w+)$/i;
 	        // make sure attr has been set
 	        entity.meta = entity.meta || {};
 	        entity.sort = entity.sort || [];

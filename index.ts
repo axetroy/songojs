@@ -17,16 +17,18 @@ interface Entity {
   meta?: Meta
 }
 
-export default function songo(entity?: Entity) {
-  return new Songo(entity);
-}
-
 interface Params {
   limit: number,
   page: number,
   skip?: number,
   sort?: string,
   query?: string
+}
+
+interface SongoPro {
+  meta: Meta,
+  sort: string[],
+  query: any
 }
 
 function encode(encodeString: string): string {
@@ -46,15 +48,13 @@ function decode(decodeString: string): any {
 
 class Songo {
 
-  public meta: any;
+  public meta: Meta;
   public sort: string[];
   public query: any;
 
-  private REG = /^([-\+])(\w+)$/i;
-
-  Meta: any;
-  Sort: any;
-  Query: any;
+  public Meta: any;
+  public Sort: any;
+  public Query: any;
 
   constructor(entity: Entity = DEFAULT_ENTITY) {
     // make sure attr has been set
@@ -106,7 +106,7 @@ class Songo {
    * @param paramsObject
    * @returns {Songo}
    */
-  public fromParams(paramsObject: Params): any {
+  public fromParams(paramsObject: Params): Songo {
     let {limit, page, skip, sort, query} = paramsObject;
     if (limit !== void 0) this.meta.limit = limit;
     if (page !== void 0) this.meta.page = page;
@@ -203,4 +203,8 @@ class Songo {
   }
 
 
+}
+
+export default function songo(entity?: Entity): Songo {
+  return new Songo(entity);
 }
