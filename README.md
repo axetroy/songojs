@@ -1,4 +1,4 @@
-### songo.js 是一个配合songo格式的打包/解析库，javascript的一种实现
+# songo.js [![Build Status](https://travis-ci.org/axetroy/songojs.svg?branch=master)](https://travis-ci.org/axetroy/songojs)[Coverage Status](https://coveralls.io/repos/github/axetroy/songojs/badge.svg?branch=master)][![Dependency](https://david-dm.org/axetroy/songojs.svg)](https://david-dm.org/axetroy/songojs)
 
 ### Documentation
 
