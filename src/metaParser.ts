@@ -5,9 +5,9 @@
 import {DEFAULT_LIMIT, DEFAULT_PAGE, DEFAULT_SKIP} from './default';
 
 interface MetaParams {
-  limit: number,
-  page: number,
-  skip: number
+  limit?: number,
+  page?: number,
+  skip?: number
 }
 
 interface MetaJson {
@@ -32,8 +32,8 @@ class Meta {
     return `_limit=${this.limit}&_page=${this.page}&_skip=${this.skip}`;
   }
 
-  toJson(): string {
-    return JSON.stringify(this.toObject());
+  toJson(replacer?: any, space?: number | string): string {
+    return JSON.stringify(this.toObject(), replacer, space);
   }
 
   toObject(): MetaJson {
@@ -51,9 +51,9 @@ function metaParser(meta: MetaParams = {
   page: DEFAULT_PAGE,
   skip: DEFAULT_SKIP
 }) {
-  const limit: number = meta.page as number || DEFAULT_LIMIT as number;
+  const limit: number = meta.limit as number || DEFAULT_LIMIT as number;
   const page: number = meta.page as number || DEFAULT_PAGE as number;
-  const skip: number = meta.page as number || DEFAULT_PAGE as number;
+  const skip: number = meta.skip as number || DEFAULT_SKIP as number;
   return new Meta(limit, page, skip);
 }
 

@@ -2,49 +2,92 @@
  * Created by axetroy on 16-9-16.
  */
 
-function parser(operators, context = {}, attr, value) {
-  let _context = context['%' + operators[0]] = context['%' + operators[0]] || {};
-  switch (operators.length) {
-    case 0:
-      break;
-    case 1:
-      value !== void 0 ? context['%' + operators[0]][attr] = value : void 0;
-      break;
-    default:
-      operators.shift();
-      return parser(operators, _context, attr, value);
-  }
-  return context;
-}
 
-function parse(operatorStr, value, context = {}) {
+/**
+ *
+ * @param operatorStr
+ * @param value
+ * @param context
+ * @returns {any}
+ */
+function parse(operatorStr: string, value: string, context: any = {}) {
+  if (value === void 0 || value === null || value === '') return;
   let operators = operatorStr.match(/((?=\$)?[^\$]+(?=\$))/ig);
-  let attr = operatorStr.match(/((?=\$)?\w+(?!=\$))$/i);
-  parser(operators, context, attr[1], value);
+  let logicOP: string[] = operators.length > 1 ? operators.slice(0, operators.length - 1) : [];       // 逻辑运算符
+  let compareOP: string = operators[operators.length - 1];                                            // 比较运算符
+  let key: string = operatorStr.match(/((?=\$)?\w+(?!=\$))$/i)[1];                                    // 查询key名
+
+  let logicStr = logicOP.length ? '$' + logicOP.join('$') + '$' : '';
+
+  context[`${logicStr}${key}`] = context[`${logicStr}${key}`] || [];
+
+  context[`${logicStr}${key}`].push('$' + compareOP + '$' + value);
+
   return context;
 }
 
-let query = {
-  currency: 'USD',
-  $or$level: '$gte$10'
-};
 
-function queryParser(queryObject = {}) {
-  let query = {};
-  for (let key in queryObject) {
-    if (queryObject.hasOwnProperty(key)) {
-      // parse(multiOp, queryObject[multiOp], query)
-
-      if (!/^\$[^\$]+\$/.test(key)) {
-        console.log(key);
-        query[`$and$${key}`] = queryObject[key];
-      }
-
+function each(object, iterator): void {
+  if (!object || !Object.keys(object)) return;
+  for (let key in object) {
+    if (object.hasOwnProperty(key)) {
+      typeof iterator === 'function' && iterator.call(object, object[key], key, object);
     }
   }
-  return query;
 }
 
-console.log(queryParser(query));
+function queryParser(queryObject: any = {}): any {
+  return new Query(queryObject);
+}
+
+class Query {
+  private query: any = {};
+  private object: any = {};
+
+  constructor(private queryObject: any) {
+    this.parse(queryObject);
+  }
+
+  parse(queryObject): void {
+    /**
+     * 覆盖this.object对象
+     * 保持 key = [value]   的形式
+     */
+    each(queryObject, (value: string, key: string)=> {
+      if (!/^\$[^\$]{2}\$/.test(key)) return;
+      parse(key, value, this.object);
+    });
+
+    /**
+     * 覆盖this.query对象
+     * 将this.object 转化为如下格式:
+     * key = value1,value2,value3
+     */
+    each(this.object, (value: string[], key: string) => {
+      this.query[key] = value.sort().join(',');
+    });
+  }
+
+  get string(): string {
+    return this.toString();
+  }
+
+  toJson(replacer?: any, space?: number | string): string {
+    return JSON.stringify(this.toObject(), replacer, space);
+  }
+
+  toObject(): any {
+    return this.object;
+  }
+
+  toString(): string {
+    let arr: string[] = [];
+    each(this.query, function (value: string, key: string) {
+      arr.push(key + '=' + value);
+    });
+    arr.sort();
+    return arr.join('&');
+  }
+}
 
 export {queryParser};
