@@ -1,3 +1,3 @@
 ### welcome
 
-documentation is comming soon
+documentation is comming soon!
