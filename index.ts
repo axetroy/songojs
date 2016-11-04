@@ -25,12 +25,6 @@ interface Params {
   query?: string
 }
 
-interface SongoPro {
-  meta: Meta,
-  sort: string[],
-  query: any
-}
-
 function encode(encodeString: string): string {
   return GLOBAL.btoa ? GLOBAL.btoa(encodeString) : encodeURIComponent(encodeString)
 }
