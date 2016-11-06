@@ -283,7 +283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var DEFAULT_QUERY = {};
 	exports.DEFAULT_QUERY = DEFAULT_QUERY;
-	var DEFAULT_SORT = '-created';
+	var DEFAULT_SORT = '';
 	exports.DEFAULT_SORT = DEFAULT_SORT;
 	var DEFAULT_LIMIT = 10;
 	exports.DEFAULT_LIMIT = DEFAULT_LIMIT;
@@ -293,7 +293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.DEFAULT_SKIP = DEFAULT_SKIP;
 	var DEFAULT_ENTITY = {
 	    query: DEFAULT_QUERY,
-	    sort: [DEFAULT_SORT],
+	    sort: [],
 	    limit: DEFAULT_LIMIT,
 	    page: DEFAULT_PAGE,
 	    skip: DEFAULT_SKIP
@@ -327,7 +327,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this.sortArray.map(function (v) { return v.replace(/^\+/, ''); }).join(',');
 	    };
 	    Sort.prototype.toString = function () {
-	        return 'sort=' + this.normalize();
+	        return '_sort=' + this.normalize();
 	    };
 	    return Sort;
 	}());
