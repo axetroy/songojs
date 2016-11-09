@@ -1,0 +1,2315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Songo - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Meta.html">Meta</a><ul class='methods'><li data-type='method'><a href="Meta.html#toJson">toJson</a></li><li data-type='method'><a href="Meta.html#toString">toString</a></li></ul></li><li><a href="Query.html">Query</a><ul class='methods'><li data-type='method'><a href="Query.html#parse">parse</a></li><li data-type='method'><a href="Query.html#toJson">toJson</a></li><li data-type='method'><a href="Query.html#toObject">toObject</a></li><li data-type='method'><a href="Query.html#toString">toString</a></li></ul></li><li><a href="Songo.html">Songo</a><ul class='methods'><li data-type='method'><a href="Songo.html#clearSort">clearSort</a></li><li data-type='method'><a href="Songo.html#fromParams">fromParams</a></li><li data-type='method'><a href="Songo.html#indexSort">indexSort</a></li><li data-type='method'><a href="Songo.html#onlySort">onlySort</a></li><li data-type='method'><a href="Songo.html#popSort">popSort</a></li><li data-type='method'><a href="Songo.html#pushSort">pushSort</a></li><li data-type='method'><a href="Songo.html#removeSort">removeSort</a></li><li data-type='method'><a href="Songo.html#setSort">setSort</a></li><li data-type='method'><a href="Songo.html#shiftSort">shiftSort</a></li><li data-type='method'><a href="Songo.html#toParams">toParams</a></li><li data-type='method'><a href="Songo.html#toQuery">toQuery</a></li><li data-type='method'><a href="Songo.html#toString">toString</a></li><li data-type='method'><a href="Songo.html#unshiftSort">unshiftSort</a></li></ul></li><li><a href="Sort.html">Sort</a><ul class='methods'><li data-type='method'><a href="Sort.html#normalize">normalize</a></li><li data-type='method'><a href="Sort.html#toString">toString</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Songo</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        Songo
+        </h2>
+        
+            <div class="class-description">用来构建songo协议的对象</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Songo"><span class="type-signature"></span>new Songo<span class="signature">(entity<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:troy450409405@gmail.com">Axetroy</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object.&lt;string, (string|Array.&lt;string>)></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">全部是以key-value的形式,不能有任何形式的嵌套</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sort</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">字符串数组，按照顺序描述排序</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>meta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">可选字段[limit,page,skip]筛选对象，接受数字</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">获取转换的url字符串</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Query</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Query.html">Query</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">内部的Query对象</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Sort</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Sort.html">Sort</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">内部的Sort对象</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Meta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Meta.html">Meta</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">内部的Meta对象</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>new Songo({
+     query:{
+       $eq$status:1,
+       $gt$money:100
+     },
+     sort:['created'],
+     meta:{
+       limit:10,
+       page:0,
+       skip:0
+     }
+   })</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>entity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>object.&lt;></code>
+                
+                </td>
+            
+
+            <td class="description last">实例化Songo类的参数，包含3个字段:[query,sort,meta]</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="string"><span class="type-signature">(readonly) </span>string<span class="type-signature"></span></h4>
+
+
+<p class="summary">获取转换的url字符串.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line145">line 145</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    获取转换的url字符串
+</div>
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="clearSort"><span class="type-signature"></span>clearSort<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">清空排序队列.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line225">line 225</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    清空排序队列
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['-create']});
+   songo.clearSort();</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="fromParams"><span class="type-signature"></span>fromParams<span class="signature">(paramsObject)</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">将一个params对象，转化为实例.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line192">line 192</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    将一个params对象，转化为实例
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({});
+   songo.fromParams({
+     limit:10,
+     page:20
+   })</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>paramsObject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Params.&lt;string, (number|string)></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">类似angular的ui-router中的$stateParams，url的query转化为plainObject</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="indexSort"><span class="type-signature"></span>indexSort<span class="signature">(sortKey)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+    <p class="summary">索引一个sortKey.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line238">line 238</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    索引一个sortKey
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['-create']});
+   songo.indexSort('created');   // 0</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sortKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">排序key，例如"+created","-created";默认+可以不填</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="onlySort"><span class="type-signature"></span>onlySort<span class="signature">(sortKey)</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">仅仅按照一个key排序.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line250">line 250</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    仅仅按照一个key排序
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['-create']});
+   songo.onlySort('-money');
+   console.log(songo.sort);    // ['-money']</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sortKey</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="popSort"><span class="type-signature"></span>popSort<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">删除队列的最后一个,，类似Array.prototype.pop，但是不会返回被删除的对象.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line344">line 344</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    删除队列的最后一个,，类似Array.prototype.pop，但是不会返回被删除的对象
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['money','level','created']});
+   songo.popSort();        // songo.sort >>  ['money','level']
+   songo.popSort();        // songo.sort >>  ['money']
+   songo.popSort();        // songo.sort >>  []</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="pushSort"><span class="type-signature"></span>pushSort<span class="signature">(sortKey)</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">在队列最后一个添加sortKey，类似Array.prototype.push.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line326">line 326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    在队列最后一个添加sortKey，类似Array.prototype.push
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['created']});
+   songo.pushSort('level');        // songo.sort >>  ['created','level']
+   songo.pushSort('money');        // songo.sort >>  ['created','level','money']
+   songo.pushSort('level');        // songo.sort >>  ['created','money','level']</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sortKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">排序key，例如"+created","-created";默认+可以不填</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="removeSort"><span class="type-signature"></span>removeSort<span class="signature">(sortKey)</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">删除其中的某个sortKey.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line309">line 309</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    删除其中的某个sortKey
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['money','level','created']});
+   songo.removeSort('created');        // songo.sort >>  ['money','level']
+   songo.removeSort('money');          // songo.sort >>  ['level']
+   songo.removeSort('-level');         // songo.sort >>  ['level']</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sortKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">排序key，例如"+created","-created";默认+可以不填</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setSort"><span class="type-signature"></span>setSort<span class="signature">(sortKey)</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">添加一个sort.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line267">line 267</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    添加一个sort
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['-create']});
+   songo.setSort('created');       // songo.sort >>  ['created']
+   songo.setSort('-money');        // songo.sort >>  ['-money','created']
+   songo.setSort('level');         // songo.sort >>  ['level','-money','created']
+   songo.setSort('-created');      // songo.sort >>  ['created','level','-money']</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sortKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">排序key，例如"+created","-created";默认+可以不填</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="shiftSort"><span class="type-signature"></span>shiftSort<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">除队列的第一个，类似Array.prototype.shift，但是不会返回被删除的对象.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line358">line 358</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    除队列的第一个，类似Array.prototype.shift，但是不会返回被删除的对象
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['money','level','created']});
+   songo.shiftSort();        // songo.sort >>  ['level','created']
+   songo.shiftSort();        // songo.sort >>  ['created']
+   songo.shiftSort();        // songo.sort >>  []</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="toParams"><span class="type-signature"></span>toParams<span class="signature">()</span><span class="type-signature"> &rarr; {Params}</span></h4>
+
+    
+    <p class="summary">转换成适合在url上防止的对象.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line170">line 170</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    转换成适合在url上防止的对象
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({
+     meta:{
+       limit:10,
+       page:0
+     }
+   });
+   songo.toParams()    // ?_limit=10&amp;_page=0</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Params</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="toQuery"><span class="type-signature"></span>toQuery<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+    <p class="summary">toString方法的别名.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    toString方法的别名
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo();
+   songo.toQuery()</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+    <p class="summary">转换成最终的url字符串.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line212">line 212</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    转换成最终的url字符串
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li><a href="Songo.html">Songo</a></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="unshiftSort"><span class="type-signature"></span>unshiftSort<span class="signature">(sortKey)</span><span class="type-signature"> &rarr; {<a href="Songo.html">Songo</a>}</span></h4>
+
+    
+    <p class="summary">在队列第一个插入，类似Array.prototype.unshift.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="songo.js.html">songo.js</a>, <a href="songo.js.html#line290">line 290</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    在队列第一个插入，类似Array.prototype.unshift
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let songo = new Songo({sort:['-create']});
+   songo.unshiftSort('created');       // songo.sort >>  ['created']
+   songo.unshiftSort('level');         // songo.sort >>  ['level','created']
+   songo.unshiftSort('-money');        // songo.sort >>  ['money','level','created']</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sortKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">排序key，例如"+created","-created";默认+可以不填</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Songo.html">Songo</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Wed Nov 09 2016 18:20:52 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

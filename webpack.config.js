@@ -9,8 +9,7 @@ var path = require('path');
 // webpack.config.js
 module.exports = {
   entry: {
-    "songo": path.join(__dirname, 'index.ts'),
-    "songo.min": path.join(__dirname, 'index.ts')
+    "songo": path.join(__dirname, 'index.ts')
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -36,11 +35,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
+/*    new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       },
       test: /\.min\.js$/
-    })
+    })*/
   ]
 };

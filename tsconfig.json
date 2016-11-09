@@ -6,9 +6,7 @@
     "sourceMap": true,
     "types": [
       "mocha",
-      "node",
-      "typescript",
-      "core-js"
+      "node"
     ]
   },
   "exclude": [

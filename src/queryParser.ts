@@ -2,7 +2,6 @@
  * Created by axetroy on 16-9-16.
  */
 
-
 /**
  *
  * @param operatorStr
@@ -40,14 +39,29 @@ function queryParser(queryObject: any = {}): any {
   return new Query(queryObject);
 }
 
+/**
+ * @class
+ * @classdesc Songo实例的内部对象，一般情况下，不要使用
+ * @property  string {string} 将query转后成url后的字符串
+ * @property  query {object}
+ * @property  object {object}
+ * @returns {Query}
+ */
 class Query {
   private query: any = {};
   private object: any = {};
 
+  /**
+   * @param queryObject {{string, (string|string[])}} 一个key-value的对象，没有对象嵌套
+   */
   constructor(private queryObject: any) {
     this.parse(queryObject);
   }
 
+  /**
+   * 解析queryObject
+   * @param queryObject {{string, (string|string[])}} 一个key-value的对象，没有对象嵌套
+   */
   parse(queryObject): void {
     /**
      * 覆盖this.object对象
@@ -72,14 +86,36 @@ class Query {
     return this.toString();
   }
 
+  /**
+   * JSON.stringify 's replacer
+   * @callback replacer
+   * @param key {string}
+   * @param value {string}
+   * @returns {*}
+   */
+
+  /**
+   * 把一唯对象转换成json
+   * @param [replacer]  {replacer}    跟JSON.stringify(value,replacer,space)中的replacer一样
+   * @param [space]     {(number|null)} 跟JSON.stringify(value,replacer,space)中的space一样
+   * @returns {string}
+   */
   toJson(replacer?: any, space?: number | string): string {
     return JSON.stringify(this.toObject(), replacer, space);
   }
 
+  /**
+   * 把queryObject对象转换成一维对象
+   * @returns {{}}
+   */
   toObject(): any {
     return this.object;
   }
 
+  /**
+   * 将query转后成url后的字符串
+   * @returns {string}
+   */
   toString(): string {
     let arr: string[] = [];
     each(this.query, function (value: string, key: string) {

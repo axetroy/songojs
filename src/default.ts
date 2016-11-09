@@ -10,10 +10,34 @@ interface Entity {
   query: any
 }
 
+/**
+ * @const
+ * @type {{}}
+ */
 const DEFAULT_QUERY = {};
+
+/**
+ * @type {string}
+ * @constant
+ */
 const DEFAULT_SORT = '';
+
+/**
+ * @const
+ * @type {number}
+ */
 const DEFAULT_LIMIT = 10;
+
+/**
+ * @const
+ * @type {number}
+ */
 const DEFAULT_PAGE = 0;
+
+/**
+ * @const
+ * @type {number}
+ */
 const DEFAULT_SKIP = 0;
 
 const DEFAULT_ENTITY: Entity = {

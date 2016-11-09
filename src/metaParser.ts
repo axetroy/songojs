@@ -16,7 +16,15 @@ interface MetaJson {
   _skip: number
 }
 
-
+/**
+ * @class
+ * @classdesc Songo实例的内部对象，一般情况下，不要使用
+ * @property  string {string} 将meta转后成url后的字符串
+ * @property  _limit {number}
+ * @property  _page {number}
+ * @property  _skip {number}
+ * @returns {Query}
+ */
 class Meta {
   public _limit: number;
   public _page: number;
@@ -28,10 +36,20 @@ class Meta {
     this._skip = skip;
   }
 
+  /**
+   * 覆盖原生方法
+   * @returns {string}
+   */
   toString(): string {
     return `_limit=${this.limit}&_page=${this.page}&_skip=${this.skip}`;
   }
 
+  /**
+   * 把一唯对象转换成json
+   * @param [replacer]  {replacer}    跟JSON.stringify(value,replacer,space)中的replacer一样
+   * @param [space]     {(number|null)} 跟JSON.stringify(value,replacer,space)中的space一样
+   * @returns {string}
+   */
   toJson(replacer?: any, space?: number | string): string {
     return JSON.stringify(this.toObject(), replacer, space);
   }

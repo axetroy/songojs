@@ -1,7 +1,46 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>songo.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Meta.html">Meta</a><ul class='methods'><li data-type='method'><a href="Meta.html#toJson">toJson</a></li><li data-type='method'><a href="Meta.html#toString">toString</a></li></ul></li><li><a href="Query.html">Query</a><ul class='methods'><li data-type='method'><a href="Query.html#parse">parse</a></li><li data-type='method'><a href="Query.html#toJson">toJson</a></li><li data-type='method'><a href="Query.html#toObject">toObject</a></li><li data-type='method'><a href="Query.html#toString">toString</a></li></ul></li><li><a href="Songo.html">Songo</a><ul class='methods'><li data-type='method'><a href="Songo.html#clearSort">clearSort</a></li><li data-type='method'><a href="Songo.html#fromParams">fromParams</a></li><li data-type='method'><a href="Songo.html#indexSort">indexSort</a></li><li data-type='method'><a href="Songo.html#onlySort">onlySort</a></li><li data-type='method'><a href="Songo.html#popSort">popSort</a></li><li data-type='method'><a href="Songo.html#pushSort">pushSort</a></li><li data-type='method'><a href="Songo.html#removeSort">removeSort</a></li><li data-type='method'><a href="Songo.html#setSort">setSort</a></li><li data-type='method'><a href="Songo.html#shiftSort">shiftSort</a></li><li data-type='method'><a href="Songo.html#toParams">toParams</a></li><li data-type='method'><a href="Songo.html#toQuery">toQuery</a></li><li data-type='method'><a href="Songo.html#toString">toString</a></li><li data-type='method'><a href="Songo.html#unshiftSort">unshiftSort</a></li></ul></li><li><a href="Sort.html">Sort</a><ul class='methods'><li data-type='method'><a href="Sort.html#normalize">normalize</a></li><li data-type='method'><a href="Sort.html#toString">toString</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">songo.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' &amp;&amp; typeof module === 'object')
 		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
+	else if(typeof define === 'function' &amp;&amp; define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
 		exports["songo"] = factory();
@@ -87,8 +126,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * @class
 	 * @classdesc 用来构建songo协议的对象
-	 * @property query  {object<string, (string | string[])>}  全部是以key-value的形式,不能有任何形式的嵌套
-	 * @property sort   {Array<string>} 字符串数组，按照顺序描述排序
+	 * @property query  {object&lt;string, (string | string[])>}  全部是以key-value的形式,不能有任何形式的嵌套
+	 * @property sort   {Array&lt;string>} 字符串数组，按照顺序描述排序
 	 * @property meta   {{meta:number,page:number,limit:number,skip:number}}  可选字段[limit,page,skip]筛选对象，接受数字
 	 * @property string {string} 获取转换的url字符串
 	 * @property Query {Query} 内部的Query对象
@@ -107,11 +146,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *        skip:0
 	 *      }
 	 *    })
-	 * @author Axetroy <troy450409405@gmail.com>
+	 * @author Axetroy &lt;troy450409405@gmail.com>
 	 */
 	class Songo {
 	    /**
-	     * @param [entity=object.<>] {{query:object,sort:string[],meta:object<string,number>}}
+	     * @param [entity=object.&lt;>] {{query:object,sort:string[],meta:object&lt;string,number>}}
 	     *    实例化Songo类的参数，包含3个字段:[query,sort,meta]
 	     * @returns{Songo}
 	     */
@@ -164,7 +203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *        page:0
 	     *      }
 	     *    });
-	     *    songo.toParams()    // ?_limit=10&_page=0
+	     *    songo.toParams()    // ?_limit=10&amp;_page=0
 	     * @returns {Params}
 	     */
 	    toParams() {
@@ -179,7 +218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    /**
 	     * 将一个params对象，转化为实例
-	     * @param paramsObject {Params.<string, (number|string)>}
+	     * @param paramsObject {Params.&lt;string, (number|string)>}
 	     *    类似angular的ui-router中的$stateParams，url的query转化为plainObject
 	     * @example
 	     *    let songo = new Songo({});
@@ -213,7 +252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.parse();
 	        return [this.Meta, this.Sort, this.Query]
 	            .filter(v => v + '')
-	            .join('&');
+	            .join('&amp;');
 	    }
 	    /**
 	     * 清空排序队列
@@ -400,7 +439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @returns {string}
 	     */
 	    toString() {
-	        return `_limit=${this.limit}&_page=${this.page}&_skip=${this.skip}`;
+	        return `_limit=${this.limit}&amp;_page=${this.page}&amp;_skip=${this.skip}`;
 	    }
 	    /**
 	     * 把一唯对象转换成json
@@ -505,7 +544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    constructor(sortArray) {
 	        this.sortArray = sortArray;
-	        if (Array.isArray(sortArray) && sortArray.length) {
+	        if (Array.isArray(sortArray) &amp;&amp; sortArray.length) {
 	            sortArray.forEach((v, i) => this[i] = v);
 	        }
 	    }
@@ -558,7 +597,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	    for (let key in object) {
 	        if (object.hasOwnProperty(key)) {
-	            typeof iterator === 'function' && iterator.call(object, object[key], key, object);
+	            typeof iterator === 'function' &amp;&amp; iterator.call(object, object[key], key, object);
 	        }
 	    }
 	}
@@ -643,7 +682,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            arr.push(key + '=' + value);
 	        });
 	        arr.sort();
-	        return arr.join('&');
+	        return arr.join('&amp;');
 	    }
 	}
 
@@ -651,4 +690,22 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ }
 /******/ ])
 });
-;
+;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Wed Nov 09 2016 18:20:52 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
