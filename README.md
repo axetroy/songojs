@@ -18,7 +18,7 @@ const songo = require('songo')
 import songo from 'songo';
 ```
 
-### Documentation
+### [Documentation](https://axetroy.github.io/songojs)
 
 #### songo(entity?: Entity):Songo
 
