@@ -55,11 +55,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	const metaParser_1 = __webpack_require__(1);
-	const sortParser_1 = __webpack_require__(3);
-	const queryParser_1 = __webpack_require__(4);
-	const default_1 = __webpack_require__(2);
-	const GLOBAL = this;
+	var metaParser_1 = __webpack_require__(1);
+	var sortParser_1 = __webpack_require__(3);
+	var queryParser_1 = __webpack_require__(4);
+	var default_1 = __webpack_require__(2);
+	var GLOBAL = this;
 	/**
 	 * 字符串转码
 	 * @param encodeString {string} 要转码的字符串
@@ -75,7 +75,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	function decode(decodeString) {
 	    decodeString = decodeURIComponent(decodeString);
-	    let result = {};
+	    var result = {};
 	    try {
 	        result = JSON.parse(decodeString);
 	    }
@@ -109,13 +109,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *    })
 	 * @author Axetroy <troy450409405@gmail.com>
 	 */
-	class Songo {
+	var Songo = (function () {
 	    /**
 	     * @param [entity=object.<>] {{query:object,sort:string[],meta:object<string,number>}}
 	     *    实例化Songo类的参数，包含3个字段:[query,sort,meta]
 	     * @returns{Songo}
 	     */
-	    constructor(entity = default_1.DEFAULT_ENTITY) {
+	    function Songo(entity) {
+	        if (entity === void 0) { entity = default_1.DEFAULT_ENTITY; }
 	        // make sure attr has been set
 	        entity.meta = entity.meta || {};
 	        entity.sort = entity.sort || [];
@@ -132,19 +133,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /**
 	     * @private
 	     */
-	    parse() {
+	    Songo.prototype.parse = function () {
 	        this.Meta = metaParser_1.metaParser(this.meta);
 	        this.Sort = sortParser_1.sortParser(this.sort);
 	        this.Query = queryParser_1.queryParser(this.query);
-	    }
-	    /**
-	     * 获取转换的url字符串
-	     * @readonly
-	     * @returns {string}
-	     */
-	    get string() {
-	        return this.toString();
-	    }
+	    };
+	    Object.defineProperty(Songo.prototype, "string", {
+	        /**
+	         * 获取转换的url字符串
+	         * @readonly
+	         * @returns {string}
+	         */
+	        get: function () {
+	            return this.toString();
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * toString方法的别名
 	     * @example
@@ -152,9 +157,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.toQuery()
 	     * @returns {string}
 	     */
-	    toQuery() {
+	    Songo.prototype.toQuery = function () {
 	        return this.toString();
-	    }
+	    };
 	    /**
 	     * 转换成适合在url上防止的对象
 	     * @example
@@ -167,7 +172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.toParams()    // ?_limit=10&_page=0
 	     * @returns {Params}
 	     */
-	    toParams() {
+	    Songo.prototype.toParams = function () {
 	        this.parse();
 	        return {
 	            limit: this.Meta.limit,
@@ -176,7 +181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            sort: this.Sort.normalize(),
 	            query: encode(JSON.stringify(this.query)) // base64加密 || 转码
 	        };
-	    }
+	    };
 	    /**
 	     * 将一个params对象，转化为实例
 	     * @param paramsObject {Params.<string, (number|string)>}
@@ -189,8 +194,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    })
 	     * @returns {Songo}
 	     */
-	    fromParams(paramsObject) {
-	        let { limit, page, skip, sort, query } = paramsObject;
+	    Songo.prototype.fromParams = function (paramsObject) {
+	        var limit = paramsObject.limit, page = paramsObject.page, skip = paramsObject.skip, sort = paramsObject.sort, query = paramsObject.query;
 	        if (limit !== void 0)
 	            this.meta.limit = limit;
 	        if (page !== void 0)
@@ -202,19 +207,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (query !== void 0)
 	            this.query = decode(query); // base64解密 || 转码
 	        return this;
-	    }
+	    };
 	    /**
 	     * 转换成最终的url字符串
 	     * @override
 	     * @this Songo
 	     * @returns {string}
 	     */
-	    toString() {
+	    Songo.prototype.toString = function () {
 	        this.parse();
 	        return [this.Meta, this.Sort, this.Query]
-	            .filter(v => v + '')
+	            .filter(function (v) { return v + ''; })
 	            .join('&');
-	    }
+	    };
 	    /**
 	     * 清空排序队列
 	     * @example
@@ -222,11 +227,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.clearSort();
 	     * @returns {Songo}
 	     */
-	    clearSort() {
+	    Songo.prototype.clearSort = function () {
 	        this.sort = [];
 	        this.parse();
 	        return this;
-	    }
+	    };
 	    /**
 	     * 索引一个sortKey
 	     * @param sortKey {string}  排序key，例如"+created","-created";默认+可以不填
@@ -235,9 +240,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.indexSort('created');   // 0
 	     * @returns {number}
 	     */
-	    indexSort(sortKey) {
-	        return this.sort.map(v => v.replace(/^[\-\+]/, '')).indexOf(sortKey.replace(/^[\-\+]/, ''));
-	    }
+	    Songo.prototype.indexSort = function (sortKey) {
+	        return this.sort.map(function (v) { return v.replace(/^[\-\+]/, ''); }).indexOf(sortKey.replace(/^[\-\+]/, ''));
+	    };
 	    /**
 	     * 仅仅按照一个key排序
 	     * @param sortKey
@@ -247,11 +252,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    console.log(songo.sort);    // ['-money']
 	     * @returns {Songo}
 	     */
-	    onlySort(sortKey) {
+	    Songo.prototype.onlySort = function (sortKey) {
 	        this.sort = [sortKey];
 	        this.parse();
 	        return this;
-	    }
+	    };
 	    /**
 	     * 添加一个sort
 	     * @param sortKey {string} 排序key，例如"+created","-created";默认+可以不填
@@ -264,8 +269,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *
 	     * @returns {Songo}
 	     */
-	    setSort(sortKey) {
-	        let index = this.indexSort(sortKey);
+	    Songo.prototype.setSort = function (sortKey) {
+	        var index = this.indexSort(sortKey);
 	        // check the attr exist or not
 	        if (index >= 0) {
 	            this.sort.splice(index, 1);
@@ -276,7 +281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        this.parse();
 	        return this;
-	    }
+	    };
 	    /**
 	     * 在队列第一个插入，类似Array.prototype.unshift
 	     * @param sortKey {string}  排序key，例如"+created","-created";默认+可以不填
@@ -287,15 +292,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.unshiftSort('-money');        // songo.sort >>  ['money','level','created']
 	     * @returns {Songo}
 	     */
-	    unshiftSort(sortKey) {
-	        let index = this.indexSort(sortKey);
+	    Songo.prototype.unshiftSort = function (sortKey) {
+	        var index = this.indexSort(sortKey);
 	        // check the attr exist or not
 	        if (index >= 0)
 	            this.sort.splice(index, 1);
 	        this.sort.unshift(sortKey);
 	        this.parse();
 	        return this;
-	    }
+	    };
 	    /**
 	     * 删除其中的某个sortKey
 	     * @param sortKey {string}  排序key，例如"+created","-created";默认+可以不填
@@ -306,13 +311,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.removeSort('-level');         // songo.sort >>  ['level']
 	     * @returns {Songo}
 	     */
-	    removeSort(sortKey) {
-	        let index = this.indexSort(sortKey);
+	    Songo.prototype.removeSort = function (sortKey) {
+	        var index = this.indexSort(sortKey);
 	        if (index >= 0)
 	            this.sort.splice(index, 1);
 	        this.parse();
 	        return this;
-	    }
+	    };
 	    /**
 	     * 在队列最后一个添加sortKey，类似Array.prototype.push
 	     * @param sortKey {string}  排序key，例如"+created","-created";默认+可以不填
@@ -323,15 +328,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.pushSort('level');        // songo.sort >>  ['created','money','level']
 	     * @returns {Songo}
 	     */
-	    pushSort(sortKey) {
-	        let index = this.indexSort(sortKey);
+	    Songo.prototype.pushSort = function (sortKey) {
+	        var index = this.indexSort(sortKey);
 	        // check the attr exist or not
 	        if (index >= 0)
 	            this.sort.splice(index, 1);
 	        this.sort.push(sortKey);
 	        this.parse();
 	        return this;
-	    }
+	    };
 	    /**
 	     * 删除队列的最后一个,，类似Array.prototype.pop，但是不会返回被删除的对象
 	     * @example
@@ -341,11 +346,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.popSort();        // songo.sort >>  []
 	     * @returns {Songo}
 	     */
-	    popSort() {
+	    Songo.prototype.popSort = function () {
 	        this.sort.pop();
 	        this.parse();
 	        return this;
-	    }
+	    };
 	    /**
 	     * 除队列的第一个，类似Array.prototype.shift，但是不会返回被删除的对象
 	     * @example
@@ -355,12 +360,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *    songo.shiftSort();        // songo.sort >>  []
 	     * @returns {Songo}
 	     */
-	    shiftSort() {
+	    Songo.prototype.shiftSort = function () {
 	        this.sort.shift();
 	        this.parse();
 	        return this;
-	    }
-	}
+	    };
+	    return Songo;
+	}());
 	function songo(entity) {
 	    return new Songo(entity);
 	}
@@ -376,7 +382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Created by axetroy on 16-9-16.
 	 */
 	"use strict";
-	const default_1 = __webpack_require__(2);
+	var default_1 = __webpack_require__(2);
 	/**
 	 * @class
 	 * @classdesc Songo实例的内部对象，一般情况下，不要使用
@@ -386,8 +392,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @property  _skip {number}
 	 * @returns {Query}
 	 */
-	class Meta {
-	    constructor(limit, page, skip) {
+	var Meta = (function () {
+	    function Meta(limit, page, skip) {
 	        this.limit = limit;
 	        this.page = page;
 	        this.skip = skip;
@@ -399,34 +405,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * 覆盖原生方法
 	     * @returns {string}
 	     */
-	    toString() {
-	        return `_limit=${this.limit}&_page=${this.page}&_skip=${this.skip}`;
-	    }
+	    Meta.prototype.toString = function () {
+	        return "_limit=" + this.limit + "&_page=" + this.page + "&_skip=" + this.skip;
+	    };
 	    /**
 	     * 把一唯对象转换成json
 	     * @param [replacer]  {replacer}    跟JSON.stringify(value,replacer,space)中的replacer一样
 	     * @param [space]     {(number|null)} 跟JSON.stringify(value,replacer,space)中的space一样
 	     * @returns {string}
 	     */
-	    toJson(replacer, space) {
+	    Meta.prototype.toJson = function (replacer, space) {
 	        return JSON.stringify(this.toObject(), replacer, space);
-	    }
-	    toObject() {
+	    };
+	    Meta.prototype.toObject = function () {
 	        return {
 	            _limit: this._limit,
 	            _page: this._page,
 	            _skip: this._skip
 	        };
-	    }
-	}
-	function metaParser(meta = {
+	    };
+	    return Meta;
+	}());
+	function metaParser(meta) {
+	    if (meta === void 0) { meta = {
 	        limit: default_1.DEFAULT_LIMIT,
 	        page: default_1.DEFAULT_PAGE,
 	        skip: default_1.DEFAULT_SKIP
-	    }) {
-	    const limit = meta.limit || default_1.DEFAULT_LIMIT;
-	    const page = meta.page || default_1.DEFAULT_PAGE;
-	    const skip = meta.skip || default_1.DEFAULT_SKIP;
+	    }; }
+	    var limit = meta.limit || default_1.DEFAULT_LIMIT;
+	    var page = meta.page || default_1.DEFAULT_PAGE;
+	    var skip = meta.skip || default_1.DEFAULT_SKIP;
 	    return new Meta(limit, page, skip);
 	}
 	exports.metaParser = metaParser;
@@ -444,33 +452,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @const
 	 * @type {{}}
 	 */
-	const DEFAULT_QUERY = {};
+	var DEFAULT_QUERY = {};
 	exports.DEFAULT_QUERY = DEFAULT_QUERY;
 	/**
 	 * @type {string}
 	 * @constant
 	 */
-	const DEFAULT_SORT = '';
+	var DEFAULT_SORT = '';
 	exports.DEFAULT_SORT = DEFAULT_SORT;
 	/**
 	 * @const
 	 * @type {number}
 	 */
-	const DEFAULT_LIMIT = 10;
+	var DEFAULT_LIMIT = 10;
 	exports.DEFAULT_LIMIT = DEFAULT_LIMIT;
 	/**
 	 * @const
 	 * @type {number}
 	 */
-	const DEFAULT_PAGE = 0;
+	var DEFAULT_PAGE = 0;
 	exports.DEFAULT_PAGE = DEFAULT_PAGE;
 	/**
 	 * @const
 	 * @type {number}
 	 */
-	const DEFAULT_SKIP = 0;
+	var DEFAULT_SKIP = 0;
 	exports.DEFAULT_SKIP = DEFAULT_SKIP;
-	const DEFAULT_ENTITY = {
+	var DEFAULT_ENTITY = {
 	    query: DEFAULT_QUERY,
 	    sort: [],
 	    limit: DEFAULT_LIMIT,
@@ -488,7 +496,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Created by axetroy on 16-9-16.
 	 */
 	"use strict";
-	function sortParser(sort = []) {
+	function sortParser(sort) {
+	    if (sort === void 0) { sort = []; }
 	    sort = sort.length ? sort : [];
 	    return new Sort(sort);
 	}
@@ -499,31 +508,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @property  string {string} 将meta转后成url后的字符串
 	 * @returns {Query}
 	 */
-	class Sort {
+	var Sort = (function () {
 	    /**
 	     * @param sortArray {string[]}  字符串数组，按照顺序描述排序
 	     */
-	    constructor(sortArray) {
+	    function Sort(sortArray) {
+	        var _this = this;
 	        this.sortArray = sortArray;
 	        if (Array.isArray(sortArray) && sortArray.length) {
-	            sortArray.forEach((v, i) => this[i] = v);
+	            sortArray.forEach(function (v, i) { return _this[i] = v; });
 	        }
 	    }
 	    /**
 	     * 把传进来的数组，使它正常化
 	     * @returns {string}
 	     */
-	    normalize() {
-	        return this.sortArray.map(v => v.replace(/^\+/, '')).join(',');
-	    }
+	    Sort.prototype.normalize = function () {
+	        return this.sortArray.map(function (v) { return v.replace(/^\+/, ''); }).join(',');
+	    };
 	    /**
 	     * 覆盖原生方法
 	     * @returns {string}
 	     */
-	    toString() {
+	    Sort.prototype.toString = function () {
 	        return '_sort=' + this.normalize();
-	    }
-	}
+	    };
+	    return Sort;
+	}());
 
 
 /***/ },
@@ -541,28 +552,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param context
 	 * @returns {any}
 	 */
-	function parse(operatorStr, value, context = {}) {
+	function parse(operatorStr, value, context) {
+	    if (context === void 0) { context = {}; }
 	    if (value === void 0 || value === null || value === '')
 	        return;
-	    let operators = operatorStr.match(/((?=\$)?[^\$]+(?=\$))/ig);
-	    let logicOP = operators.length > 1 ? operators.slice(0, operators.length - 1) : []; // 逻辑运算符
-	    let compareOP = operators[operators.length - 1]; // 比较运算符
-	    let key = operatorStr.match(/((?=\$)?\w+(?!=\$))$/i)[1]; // 查询key名
-	    let logicStr = logicOP.length ? '$' + logicOP.join('$') + '$' : '';
-	    context[`${logicStr}${key}`] = context[`${logicStr}${key}`] || [];
-	    context[`${logicStr}${key}`].push('$' + compareOP + '$' + value);
+	    var operators = operatorStr.match(/((?=\$)?[^\$]+(?=\$))/ig);
+	    var logicOP = operators.length > 1 ? operators.slice(0, operators.length - 1) : []; // 逻辑运算符
+	    var compareOP = operators[operators.length - 1]; // 比较运算符
+	    var key = operatorStr.match(/((?=\$)?\w+(?!=\$))$/i)[1]; // 查询key名
+	    var logicStr = logicOP.length ? '$' + logicOP.join('$') + '$' : '';
+	    context["" + logicStr + key] = context["" + logicStr + key] || [];
+	    context["" + logicStr + key].push('$' + compareOP + '$' + value);
 	    return context;
 	}
 	function each(object, iterator) {
 	    if (!object || !Object.keys(object))
 	        return;
-	    for (let key in object) {
+	    for (var key in object) {
 	        if (object.hasOwnProperty(key)) {
 	            typeof iterator === 'function' && iterator.call(object, object[key], key, object);
 	        }
 	    }
 	}
-	function queryParser(queryObject = {}) {
+	function queryParser(queryObject) {
+	    if (queryObject === void 0) { queryObject = {}; }
 	    return new Query(queryObject);
 	}
 	exports.queryParser = queryParser;
@@ -574,11 +587,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @property  object {object}
 	 * @returns {Query}
 	 */
-	class Query {
+	var Query = (function () {
 	    /**
 	     * @param queryObject {{string, (string|string[])}} 一个key-value的对象，没有对象嵌套
 	     */
-	    constructor(queryObject) {
+	    function Query(queryObject) {
 	        this.queryObject = queryObject;
 	        this.query = {};
 	        this.object = {};
@@ -588,28 +601,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * 解析queryObject
 	     * @param queryObject {{string, (string|string[])}} 一个key-value的对象，没有对象嵌套
 	     */
-	    parse(queryObject) {
+	    Query.prototype.parse = function (queryObject) {
+	        var _this = this;
 	        /**
 	         * 覆盖this.object对象
 	         * 保持 key = [value]   的形式
 	         */
-	        each(queryObject, (value, key) => {
+	        each(queryObject, function (value, key) {
 	            if (!/^\$[^\$]{2}\$/.test(key))
 	                return;
-	            parse(key, value, this.object);
+	            parse(key, value, _this.object);
 	        });
 	        /**
 	         * 覆盖this.query对象
 	         * 将this.object 转化为如下格式:
 	         * key = value1,value2,value3
 	         */
-	        each(this.object, (value, key) => {
-	            this.query[key] = value.sort().join(',');
+	        each(this.object, function (value, key) {
+	            _this.query[key] = value.sort().join(',');
 	        });
-	    }
-	    get string() {
-	        return this.toString();
-	    }
+	    };
+	    Object.defineProperty(Query.prototype, "string", {
+	        get: function () {
+	            return this.toString();
+	        },
+	        enumerable: true,
+	        configurable: true
+	    });
 	    /**
 	     * JSON.stringify 's replacer
 	     * @callback replacer
@@ -623,29 +641,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param [space]     {(number|null)} 跟JSON.stringify(value,replacer,space)中的space一样
 	     * @returns {string}
 	     */
-	    toJson(replacer, space) {
+	    Query.prototype.toJson = function (replacer, space) {
 	        return JSON.stringify(this.toObject(), replacer, space);
-	    }
+	    };
 	    /**
 	     * 把queryObject对象转换成一维对象
 	     * @returns {{}}
 	     */
-	    toObject() {
+	    Query.prototype.toObject = function () {
 	        return this.object;
-	    }
+	    };
 	    /**
 	     * 将query转后成url后的字符串
 	     * @returns {string}
 	     */
-	    toString() {
-	        let arr = [];
+	    Query.prototype.toString = function () {
+	        var arr = [];
 	        each(this.query, function (value, key) {
 	            arr.push(key + '=' + value);
 	        });
 	        arr.sort();
 	        return arr.join('&');
-	    }
-	}
+	    };
+	    return Query;
+	}());
 
 
 /***/ }
