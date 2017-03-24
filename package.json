@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
+    "@types/core-js": "0.9.37",
     "@types/mocha": "^2.2.32",
     "@types/node": "^7.0.8",
     "babel-core": "^6.14.0",
