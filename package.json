@@ -19,7 +19,7 @@
     "@types/node": "^7.0.8",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^3.5.0",
     "coveralls": "^2.11.14",
     "docdash": "^0.4.0",
