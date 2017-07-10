@@ -1,6 +1,7 @@
-# songo.js [![Build Status](https://travis-ci.org/axetroy/songojs.svg?branch=master)](https://travis-ci.org/axetroy/songojs)![Coverage Status](https://coveralls.io/repos/github/axetroy/songojs/badge.svg?branch=master)[![Dependency](https://david-dm.org/axetroy/songojs.svg)](https://david-dm.org/axetroy/songojs)
+# songo.js
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/axetroy/songojs.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/axetroy/songojs.svg?branch=master)](https://travis-ci.org/axetroy/songojs)![Coverage Status](https://coveralls.io/repos/github/axetroy/songojs/badge.svg?branch=master)[![Dependency](https://david-dm.org/axetroy/songojs.svg)](https://david-dm.org/axetroy/songojs)
 
 ### Description
 
